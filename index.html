@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinith Ranasinghe — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+
+    /* ============================================
+       HOME PAGE STYLES
+       ============================================ */
+
+    .hero {
+      padding-top: 65px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background-color: var(--black);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-name {
+      font-size: 82px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .hero-name span {
+      color: var(--red);
+    }
+
+    .hero-role {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 25px;
+    }
+
+    .hero-text p {
+      font-size: 15px;
+      max-width: 420px;
+      color: var(--light);
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* Hero photo — real image */
+    .hero-photo-frame {
+      width: 100%;
+      height: 540px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* Dark gradient overlay at the bottom of hero image */
+    .hero-photo-frame::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(14,14,14,0.7), transparent);
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      background-color: var(--dark);
+      border-bottom: 1px solid var(--border);
+      padding: 45px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      gap: 20px;
+    }
+
+    .stat-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 46px;
+      font-weight: 600;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--grey);
+      margin-top: 6px;
+    }
+
+    /* Preview section */
+    .preview-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    .section-top h2 {
+      font-size: 44px;
+      color: var(--white);
+    }
+
+    .section-top h2 span {
+      color: var(--red);
+    }
+
+    /* 3-column project grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: var(--dark);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--red);
+    }
+
+    .project-img-area {
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .project-img-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-img-area img {
+      transform: scale(1.05);
+    }
+
+    .project-card-body {
+      padding: 20px;
+    }
+
+    .project-cat {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .project-card-body h3 {
+      font-size: 19px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .project-card-body p {
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    /* Navigate section */
+    .navigate-section {
+      padding: 80px 0;
+    }
+
+    .navigate-section h2 {
+      font-size: 44px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .navigate-section h2 span {
+      color: var(--red);
+    }
+
+    .navigate-section > .wrapper > p {
+      color: var(--grey);
+      margin-bottom: 40px;
+    }
+
+    .nav-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+    }
+
+    .nav-card {
+      display: block;
+      padding: 35px 28px;
+      border-right: 1px solid var(--border);
+      background-color: var(--black);
+      border-bottom: 2px solid transparent;
+      transition: background-color 0.3s, border-bottom-color 0.3s;
+    }
+
+    .nav-card:last-child {
+      border-right: none;
+    }
+
+    .nav-card:hover {
+      background-color: var(--dark);
+      border-bottom-color: var(--red);
+    }
+
+    .nav-card-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--grey);
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .nav-card h3 {
+      font-size: 24px;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .nav-card p {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    .nav-card .arrow {
+      display: block;
+      margin-top: 25px;
+      font-size: 22px;
+      color: var(--red);
+      transition: transform 0.3s;
+    }
+
+    .nav-card:hover .arrow {
+      transform: translateX(6px);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 50px 0;
+      }
+
+      .hero-name { font-size: 56px; }
+
+      .hero-photo-frame { height: 320px; }
+
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+
+      .nav-cards-grid { grid-template-columns: 1fr 1fr; }
+
+      .nav-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+      .section-top { flex-direction: column; align-items: flex-start; gap: 15px; }
+    }
+
+    @media (max-width: 540px) {
+      .hero-name { font-size: 42px; }
+      .hero-photo-frame { height: 260px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .nav-cards-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .preview-section, .navigate-section { padding: 50px 0; }
+      .hero-text p { max-width: 100%; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">DR<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrapper">
+      <div class="hero-grid">
+
+        <div class="hero-text">
+          <span class="tag fade">Creative Portfolio — 2025</span>
+          <h1 class="hero-name fade">DINITH<br><span>RANASINGHE</span></h1>
+          <p class="hero-role fade">Graphic Designer &nbsp;/&nbsp; 3D Artist &nbsp;/&nbsp; Musician</p>
+          <p class="fade">
+            I create at the intersection of visual design, three-dimensional art,
+            and sound. Every project is built with intention and crafted with care.
+          </p>
+          <div class="hero-buttons fade">
+            <a href="portfolio.html" class="btn btn-red">View My Work</a>
+            <a href="contact.html" class="btn">Get In Touch</a>
+          </div>
+        </div>
+
+        <div class="fade">
+          <div class="hero-photo-frame">
+            <img src="WhatsApp%20Image%202026-05-03%20at%2014.09.52.jpeg" alt="Dinith Ranasinghe performing live" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- STATS -->
+  <section class="stats-bar">
+    <div class="wrapper">
+      <div class="stats-grid">
+        <div class="fade">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="fade">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="fade">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="fade">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Creative Disciplines</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROJECT PREVIEWS -->
+  <section class="preview-section">
+    <div class="wrapper">
+      <div class="section-top fade">
+        <div>
+          <span class="tag">Selected Work</span>
+          <h2>Recent <span>Projects</span></h2>
+        </div>
+        <a href="portfolio.html" class="btn">All Projects &rarr;</a>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card fade">
+          <div class="project-img-area">
+            <img src="ALL BLACKS poster png.png" alt="All Blacks Gameday Poster" />
+          </div>
+          <div class="project-card-body">
+            <p class="project-cat">Graphic Design</p>
+            <h3>All Blacks Gameday Poster</h3>
+            <p>Sports poster design for All Blacks vs Springboks at Eden Park Stadium.</p>
+          </div>
+        </div>
+
+        <div class="project-card fade">
+          <div class="project-img-area">
+            <img src="wsgpt 1.png" alt="3D Music Studio" />
+          </div>
+          <div class="project-card-body">
+            <p class="project-cat">3D Art</p>
+            <h3>3D Music Studio</h3>
+            <p>A fully detailed 3D music studio environment built and rendered in Blender.</p>
+          </div>
+        </div>
+
+        <div class="project-card fade">
+          <div class="project-img-area">
+            <img src="kuwenii.png" alt="Kuweni The Musical" />
+          </div>
+          <div class="project-card-body">
+            <p class="project-cat">Graphic Design</p>
+            <h3>Kuweni The Musical</h3>
+            <p>Theatrical poster design for Kuweni The Musical — dark, dramatic, and editorial.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- NAVIGATE -->
+  <section class="navigate-section">
+    <div class="wrapper">
+      <span class="tag fade">Explore</span>
+      <h2 class="fade">Navigate <span>the Site</span></h2>
+      <p class="fade">Jump straight to any section of the portfolio.</p>
+
+      <div class="nav-cards-grid">
+        <a href="about.html" class="nav-card fade">
+          <span class="nav-card-num">01 / 04</span>
+          <h3>About Me</h3>
+          <p>My story, background, skills, and the tools I use across every discipline.</p>
+          <span class="arrow">&#8594;</span>
+        </a>
+        <a href="portfolio.html" class="nav-card fade">
+          <span class="nav-card-num">02 / 04</span>
+          <h3>Portfolio</h3>
+          <p>Design work, 3D models, illustrations, and music pieces all in one place.</p>
+          <span class="arrow">&#8594;</span>
+        </a>
+        <a href="services.html" class="nav-card fade">
+          <span class="nav-card-num">03 / 04</span>
+          <h3>Services</h3>
+          <p>What I offer, how I work, and what you can expect when we collaborate.</p>
+          <span class="arrow">&#8594;</span>
+        </a>
+        <a href="contact.html" class="nav-card fade">
+          <span class="nav-card-num">04 / 04</span>
+          <h3>Contact</h3>
+          <p>Get in touch, share your brief, and let us create something worth remembering.</p>
+          <span class="arrow">&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">DR<span>.</span></span>
+      <p>&copy; 2025 Dinith Ranasinghe. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', function() {
+      mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { mobileMenu.style.display = 'none'; });
+    });
+    var fadeEls = document.querySelectorAll('.fade');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(function(el) { obs.observe(el); });
+  </script>
+
+</body>
+</html>

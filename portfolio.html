@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Dinith Ranasinghe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+
+    /* ============================================
+       PORTFOLIO PAGE STYLES
+       ============================================ */
+
+    /* Filter bar */
+    .filter-bar {
+      background-color: var(--dark);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .filter-bar .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      padding: 9px 22px;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--grey);
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+    }
+
+    .filter-btn:hover { border-color: var(--grey); color: var(--white); }
+
+    .filter-btn.active {
+      border-color: var(--red);
+      color: var(--red);
+      background-color: rgba(230, 50, 36, 0.08);
+    }
+
+    /* Works grid */
+    .works-section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      background-color: var(--dark);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .work-card:hover { border-color: var(--red); }
+
+    .work-img-area {
+      height: 260px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Image zoom on hover */
+    .work-img-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .work-card:hover .work-img-area img {
+      transform: scale(1.05);
+    }
+
+    /* Tall card for portrait-format work */
+    .work-card.tall .work-img-area {
+      height: 380px;
+    }
+
+    /* Video cards */
+    .work-img-area video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Number top-right */
+    .work-num {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      color: rgba(230, 50, 36, 0.35);
+      z-index: 2;
+      line-height: 1;
+    }
+
+    .work-card-body {
+      padding: 20px;
+    }
+
+    .work-cat {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .work-card-body h3 {
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .work-card-body p {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* Video label badge */
+    .video-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      background-color: var(--red);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      z-index: 3;
+    }
+
+    /* About the work */
+    .about-work-section {
+      padding: 80px 0;
+    }
+
+    .about-work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-work-text h2 {
+      font-size: 44px;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .about-work-text h2 span { color: var(--red); }
+
+    .about-work-text p {
+      font-size: 15px;
+      color: var(--light);
+      margin-bottom: 15px;
+    }
+
+    .about-work-photo {
+      width: 100%;
+      height: 400px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .about-work-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 900px) {
+      .works-grid { grid-template-columns: 1fr 1fr; }
+      .about-work-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-work-photo { height: 280px; }
+    }
+
+    @media (max-width: 540px) {
+      .works-grid { grid-template-columns: 1fr; }
+      .works-section, .about-work-section { padding: 50px 0; }
+      .work-card.tall .work-img-area { height: 280px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">DR<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <header class="page-banner">
+    <div class="wrapper">
+      <span class="tag fade">02 — Showcase of Creative Work</span>
+      <h1 class="fade">PORT<span>FOLIO</span></h1>
+    </div>
+  </header>
+
+
+  <!-- FILTER BUTTONS -->
+  <div class="filter-bar">
+    <div class="wrapper">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+      <button class="filter-btn" data-filter="3d">3D Art</button>
+      <button class="filter-btn" data-filter="music">Music</button>
+      <button class="filter-btn" data-filter="video">Video</button>
+    </div>
+  </div>
+
+
+  <!-- WORKS GRID -->
+  <section class="works-section">
+    <div class="wrapper">
+      <div class="works-grid" id="works-grid">
+
+        <!-- 01 — All Blacks Poster -->
+        <div class="work-card tall fade" data-cat="graphic">
+          <div class="work-img-area">
+            <span class="work-num">01</span>
+            <img src="ALL BLACKS poster png.png" alt="All Blacks Gameday Poster" />
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">Graphic Design</p>
+            <h3>All Blacks Gameday Poster</h3>
+            <p>A high-energy sports poster for the All Blacks vs Springboks match at Eden Park Stadium to add into my portfolio. Built around bold typography, layered photography, and a dark gritty colour palette.</p>
+          </div>
+        </div>
+
+        <!-- 02 — Batman Illustration -->
+        <div class="work-card tall fade" data-cat="graphic">
+          <div class="work-img-area">
+            <span class="work-num">02</span>
+            <img src="Artboard 1 (3).png" alt="Batman Minimal Illustration" />
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">Graphic Design / Illustration</p>
+            <h3>Batman — Minimal Poster</h3>
+            <p>A minimal, silhouette-based illustration of Batman against a full moon. Explores contrast, negative space, and mood through a limited colour palette.</p>
+          </div>
+        </div>
+
+        <!-- 03 — Kuweni The Musical -->
+        <div class="work-card tall fade" data-cat="graphic">
+          <div class="work-img-area">
+            <span class="work-num">03</span>
+            <img src="kuwenii.png" alt="Kuweni The Musical Poster" />
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">Graphic Design</p>
+            <h3>Kuweni — The Musical</h3>
+            <p>A famouse Sri Lankan quality musical concert poster A Theatrical key art for Kuweni The Musical. Dark, dramatic, and layered and  designed to capture the weight and mythology of the production.</p>
+          </div>
+        </div>
+
+        <!-- 04 — 3D Studio Top View -->
+        <div class="work-card fade" data-cat="3d">
+          <div class="work-img-area">
+            <span class="work-num">04</span>
+            <img src="wsgpt 8.png" alt="3D Music Studio Top View" />
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">3D Art</p>
+            <h3>Music Studio — Top View</h3>
+            <p>Bird's eye render of a fully detailed 3D music studio environment. Two interconnected rooms production and rehearsal designed and rendered in Blender.</p>
+          </div>
+        </div>
+
+        <!-- 05 — 3D Studio Side View -->
+        <div class="work-card fade" data-cat="3d">
+          <div class="work-img-area">
+            <span class="work-num">05</span>
+            <img src="wsgpt.png" alt="3D Music Studio Side View" />
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">3D Art</p>
+            <h3>Music Studio — Side View</h3>
+            <p>Side angle render showing the rehearsal space acoustic panels, drum kit, and guitar rack. Bright colour palette contrasts with the dark soundproofing foam.</p>
+          </div>
+        </div>
+
+        <!-- 06 — 3D Studio Interior -->
+        <div class="work-card fade" data-cat="3d">
+          <div class="work-img-area">
+            <span class="work-num">06</span>
+            <img src="wsgpt 1.png" alt="3D Music Studio Interior" />
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">3D Art</p>
+            <h3>Music Studio — Interior</h3>
+            <p>Close interior view of the production section. A mixing desk, keyboard, guitar, and animated characters bring the space to life in this Blender render.</p>
+          </div>
+        </div>
+
+        <!-- 07 — Live Performance Photo -->
+        <div class="work-card fade" data-cat="music">
+          <div class="work-img-area">
+            <span class="work-num">07</span>
+            <img src="IMG-20250420-WA0088.jpg" alt="Live Performance" />
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">Music / Live Performance</p>
+            <h3>Live Acoustic Performance</h3>
+            <p>Performing live at an evening event in Sri Lanka. Acoustic guitar, vocals, and cajon an intimate set in an outdoor garden setting.</p>
+          </div>
+        </div>
+
+        <!-- 08 — Live Performance Photo 2 -->
+        <div class="work-card fade" data-cat="music">
+          <div class="work-img-area">
+            <span class="work-num">08</span>
+            <img src="IMG-20250420-WA0090.jpg" alt="Live Performance Close Up" />
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">Music / Live Performance</p>
+            <h3>Live Set — Close Up</h3>
+            <p>A focused performance shot from the same evening set. Guitar, microphone, and the energy of playing to a live audience.</p>
+          </div>
+        </div>
+
+        <!-- 09 — 3D Animation Video -->
+        <div class="work-card fade" data-cat="video">
+          <div class="work-img-area">
+            <span class="work-num">09</span>
+          <iframe
+              src="https://www.youtube.com/embed/esUX1sTiwEE"
+              title="3D Rendered Animation"
+             
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <span class="video-badge">3D Animation</span>
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">3D Art / Animation</p>
+            <h3>Studio Animation — Sequence</h3>
+            <p>An animated walkthrough sequence of the 3D Modeled Robot. Camera movement through the space, rendered frame by frame in Blender.</p>
+          </div>
+        </div>
+
+        <!-- 10 — Project Final Video -->
+        <div class="work-card fade" data-cat="video">
+          <div class="work-img-area">
+            <span class="work-num">10</span>
+             <iframe
+              src="https://www.youtube.com/embed/0Jb9dhavwSI"
+              title="Animated Cover Song"
+              
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <span class="video-badge">3D Project</span>
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">3D Art / Video</p>
+            <h3>3D Studio — Final Render</h3>
+            <p>The completed final render of the music studio 3D project. Full scene with lighting, characters, and all environmental details finalised.</p>
+          </div>
+        </div>
+
+        <!-- 11 — Music Video / Song -->
+        <div class="work-card fade" data-cat="music">
+          <div class="work-img-area">
+            <span class="work-num">11</span>
+           <iframe
+              src="https://www.youtube.com/embed/b18T1h3V9qA"
+              title="Cover Song"
+              
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <span class="video-badge">Music</span>
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">Music Production</p>
+            <h3>Original Song</h3>
+            <p>A cover done by myslef and a member in my music band composed, performed, and recorded. Showcasing live acoustic performance and production skills.</p>
+          </div>
+        </div>
+
+        <!-- 12 — Live Video -->
+        <div class="work-card fade" data-cat="music">
+          <div class="work-img-area">
+            <span class="work-num">12</span>
+            <iframe
+              src="https://www.youtube.com/embed/2EoiNX64DFs"
+              title="Live Performance"
+              
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <span class="video-badge">Live</span>
+          </div>
+          <div class="work-card-body">
+            <p class="work-cat">Music / Live</p>
+            <h3>Live Performance Video</h3>
+            <p>Video footage from a live performance event. Captures the atmosphere and energy of performing acoustic music to a live audience.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ABOUT THE WORK -->
+  <section class="about-work-section">
+    <div class="wrapper">
+      <div class="about-work-grid">
+        <div class="about-work-text fade">
+          <span class="tag">About the Work</span>
+          <h2>Three Disciplines, <span>One Vision</span></h2>
+          <div class="red-line"></div>
+          <p>
+            Every piece in this portfolio was made with intention. Whether it is a brand identity,
+            a 3D scene, or an original music performance each project began with a question:
+            what does this need to feel like?
+          </p>
+          <p>
+            All work shown here is original. If you are interested in commissioning a piece
+            or collaborating, the contact page is open.
+          </p>
+          <div style="margin-top: 28px;">
+            <a href="contact.html" class="btn btn-red">Start a Project</a>
+          </div>
+        </div>
+        <div class="fade">
+          <div class="about-work-photo">
+            <img src="WhatsApp Image 2026-05-03 at 14.09.52.jpeg" alt="Dinith performing live" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">DR<span>.</span></span>
+      <p>&copy; 2025 Dinith Ranasinghe. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', function() {
+      mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { mobileMenu.style.display = 'none'; });
+    });
+
+    var fadeEls = document.querySelectorAll('.fade');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.08 });
+    fadeEls.forEach(function(el) { obs.observe(el); });
+
+    // Filter buttons
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var workCards = document.querySelectorAll('.work-card');
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var filter = btn.getAttribute('data-filter');
+        workCards.forEach(function(card) {
+          if (filter === 'all' || card.getAttribute('data-cat') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

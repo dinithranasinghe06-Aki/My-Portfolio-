@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Dinith Ranasinghe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+
+    /* ============================================
+       SERVICES PAGE STYLES
+       ============================================ */
+
+    .intro-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .intro-text h2 {
+      font-size: 44px;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .intro-text h2 span { color: var(--red); }
+
+    .intro-text p {
+      font-size: 15px;
+      color: var(--light);
+      margin-bottom: 15px;
+    }
+
+    .intro-photo {
+      width: 100%;
+      height: 420px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .intro-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Services list */
+    .services-list-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-list-section h2 {
+      font-size: 44px;
+      color: var(--white);
+      margin-bottom: 40px;
+      line-height: 1;
+    }
+
+    .services-list-section h2 span { color: var(--red); }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+      padding: 35px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .service-row:last-child { border-bottom: 1px solid var(--border); }
+
+    .service-row-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 52px;
+      color: rgba(230, 50, 36, 0.15);
+      line-height: 1;
+      padding-top: 4px;
+    }
+
+    .service-row-main h3 {
+      font-size: 26px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .service-row-main p {
+      font-size: 14px;
+      color: var(--light);
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .service-tag {
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .service-row-note p {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.7;
+      padding-top: 6px;
+    }
+
+    /* Audience */
+    .audience-section {
+      padding: 80px 0;
+      background-color: var(--dark);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .audience-section h2 {
+      font-size: 44px;
+      color: var(--white);
+      margin-bottom: 40px;
+      line-height: 1;
+    }
+
+    .audience-section h2 span { color: var(--red); }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .audience-card {
+      background-color: var(--black);
+      border: 1px solid var(--border);
+      padding: 28px 22px;
+      transition: border-color 0.3s;
+    }
+
+    .audience-card:hover { border-color: var(--red); }
+
+    .audience-card-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      color: var(--red);
+      margin-bottom: 15px;
+      line-height: 1;
+    }
+
+    .audience-card h4 { font-size: 18px; color: var(--white); margin-bottom: 12px; }
+    .audience-card p { font-size: 13px; color: var(--grey); line-height: 1.6; }
+
+    /* Process */
+    .process-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .process-section h2 {
+      font-size: 44px;
+      color: var(--white);
+      margin-bottom: 40px;
+      line-height: 1;
+    }
+
+    .process-section h2 span { color: var(--red); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .process-step {
+      background-color: var(--dark);
+      border: 1px solid var(--border);
+      padding: 28px 22px;
+      transition: border-color 0.3s;
+    }
+
+    .process-step:hover { border-color: var(--red); }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 15px;
+    }
+
+    .process-step h4 { font-size: 20px; color: var(--white); margin-bottom: 12px; }
+    .process-step p { font-size: 13px; color: var(--grey); line-height: 1.6; }
+
+    /* CTA band */
+    .cta-band {
+      background-color: var(--red);
+      padding: 70px 0;
+      text-align: center;
+    }
+
+    .cta-band h2 { font-size: 52px; color: var(--black); margin-bottom: 15px; }
+    .cta-band p { font-size: 15px; color: rgba(0,0,0,0.65); max-width: 480px; margin: 0 auto 30px; }
+
+    .btn-dark { border-color: var(--black); color: var(--black); }
+    .btn-dark:hover { background-color: var(--black); color: var(--red); }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 900px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 30px; }
+      .intro-photo { height: 280px; }
+      .service-row { grid-template-columns: 60px 1fr; }
+      .service-row-note { grid-column: 2; }
+      .audience-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .intro-section, .services-list-section, .audience-section, .process-section { padding: 50px 0; }
+    }
+
+    @media (max-width: 540px) {
+      .service-row { grid-template-columns: 1fr; gap: 10px; }
+      .service-row-num { font-size: 36px; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .cta-band h2 { font-size: 34px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">DR<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <header class="page-banner">
+    <div class="wrapper">
+      <span class="tag fade">03 — What I Offer</span>
+      <h1 class="fade">SER<span>VICES</span></h1>
+    </div>
+  </header>
+
+
+  <!-- INTRO -->
+  <section class="intro-section">
+    <div class="wrapper">
+      <div class="intro-grid">
+        <div class="intro-text fade">
+          <span class="tag">What I Do</span>
+          <h2>Creative Work Done <span>Right</span></h2>
+          <div class="red-line"></div>
+          <p>
+            I offer a focused set of creative services built around three disciplines, 
+            graphic design, 3D art, and music production. Each service is delivered
+            with high craft standards, clear communication, and results that speak for themselves.
+          </p>
+          <p>
+            I work with clients who value quality and understand that great creative work
+            requires time and care. If that sounds like you, let us talk.
+          </p>
+        </div>
+        <div class="fade">
+          <div class="intro-photo">
+            <img src="wsgpt 1.png" alt="3D Music Studio — creative environment" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SERVICES LIST -->
+  <section class="services-list-section">
+    <div class="wrapper">
+      <span class="tag fade">Services Offered</span>
+      <h2 class="fade">What I Can <span>Do For You</span></h2>
+
+      <div class="service-row fade">
+        <div class="service-row-num">01</div>
+        <div class="service-row-main">
+          <h3>Graphic Design</h3>
+          <p>From brand identity and logo design to poster layouts, social media visuals, and print collateral, I craft visual systems that communicate with clarity and character.</p>
+          <div class="service-tags">
+            <span class="service-tag">Brand Identity</span>
+            <span class="service-tag">Logo Design</span>
+            <span class="service-tag">Print Media</span>
+            <span class="service-tag">Social Graphics</span>
+            <span class="service-tag">Posters</span>
+          </div>
+        </div>
+        <div class="service-row-note">
+          <p>Available for one-off commissions and ongoing arrangements. Timeline and pricing depend on project scope.</p>
+        </div>
+      </div>
+
+      <div class="service-row fade">
+        <div class="service-row-num">02</div>
+        <div class="service-row-main">
+          <h3>3D Art &amp; Visualisation</h3>
+          <p>Product visualisation, environment design, character modelling, and stylised renders, all built in Blender with attention to material, light, and form.</p>
+          <div class="service-tags">
+            <span class="service-tag">Product Renders</span>
+            <span class="service-tag">Environment Design</span>
+            <span class="service-tag">Character Modelling</span>
+            <span class="service-tag">Animation</span>
+          </div>
+        </div>
+        <div class="service-row-note">
+          <p>Delivered as high-resolution renders or animated sequences. File formats provided on request.</p>
+        </div>
+      </div>
+
+      <div class="service-row fade">
+        <div class="service-row-num">03</div>
+        <div class="service-row-main">
+          <h3>Music Production</h3>
+          <p>Original beat production, full track composition, sound design, and live acoustic performance. I tailor the sound to match the mood and purpose of your project.</p>
+          <div class="service-tags">
+            <span class="service-tag">Beat Making</span>
+            <span class="service-tag">Full Tracks</span>
+            <span class="service-tag">Sound Design</span>
+            <span class="service-tag">Mixing</span>
+            <span class="service-tag">Live Performance</span>
+          </div>
+        </div>
+        <div class="service-row-note">
+          <p>Delivered as WAV or MP3. Licensing terms discussed per project.</p>
+        </div>
+      </div>
+
+      <div class="service-row fade">
+        <div class="service-row-num">04</div>
+        <div class="service-row-main">
+          <h3>Digital Illustration</h3>
+          <p>Conceptual and editorial illustration for digital and print use, ranging from character-based pieces to abstract visual narratives.</p>
+          <div class="service-tags">
+            <span class="service-tag">Character Art</span>
+            <span class="service-tag">Concept Art</span>
+            <span class="service-tag">Editorial</span>
+            <span class="service-tag">Cover Art</span>
+          </div>
+        </div>
+        <div class="service-row-note">
+          <p>Delivered as high-resolution PNG or vector. Turnaround depends on complexity and revision rounds.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- AUDIENCE -->
+  <section class="audience-section">
+    <div class="wrapper">
+      <span class="tag fade">Ideal Clients</span>
+      <h2 class="fade">Who I Work <span>With</span></h2>
+      <div class="audience-grid">
+        <div class="audience-card fade">
+          <div class="audience-card-num">01</div>
+          <h4>Clients &amp; Brands</h4>
+          <p>Businesses and individuals seeking original visual work, from brand identity to marketing assets.</p>
+        </div>
+        <div class="audience-card fade">
+          <div class="audience-card-num">02</div>
+          <h4>Marketing Firms</h4>
+          <p>Agencies looking for a reliable creative contributor across design, 3D, and audio.</p>
+        </div>
+        <div class="audience-card fade">
+          <div class="audience-card-num">03</div>
+          <h4>Hire Employers</h4>
+          <p>Studios and companies looking for a multi-disciplinary creative to join a team.</p>
+        </div>
+        <div class="audience-card fade">
+          <div class="audience-card-num">04</div>
+          <h4>Fellow Creatives</h4>
+          <p>Artists, musicians, and designers interested in cross-discipline collaborations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="wrapper">
+      <span class="tag fade">How It Works</span>
+      <h2 class="fade">My Creative <span>Process</span></h2>
+      <div class="process-grid">
+        <div class="process-step fade">
+          <div class="step-num">Step 01</div>
+          <h4>Discovery</h4>
+          <p>We start with a conversation. I learn about your project, goals, timeline, and reference material.</p>
+        </div>
+        <div class="process-step fade">
+          <div class="step-num">Step 02</div>
+          <h4>Concept</h4>
+          <p>I develop initial concepts for your review before committing to full execution.</p>
+        </div>
+        <div class="process-step fade">
+          <div class="step-num">Step 03</div>
+          <h4>Execution</h4>
+          <p>With a concept approved, I build the work to a high standard with regular progress updates.</p>
+        </div>
+        <div class="process-step fade">
+          <div class="step-num">Step 04</div>
+          <h4>Delivery</h4>
+          <p>Final files delivered in agreed formats with a revision window and follow-up support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="wrapper">
+      <h2>Ready to Start?</h2>
+      <p>Tell me about your project and I will get back to you within 48 hours.</p>
+      <a href="contact.html" class="btn btn-dark">Get In Touch</a>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">DR<span>.</span></span>
+      <p>&copy; 2025 Dinith Ranasinghe. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', function() {
+      mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { mobileMenu.style.display = 'none'; });
+    });
+    var fadeEls = document.querySelectorAll('.fade');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(function(el) { obs.observe(el); });
+  </script>
+
+</body>
+</html>

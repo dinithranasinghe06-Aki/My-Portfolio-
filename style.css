@@ -1,0 +1,403 @@
+/* ============================================
+   DINITH RANASINGHE — PORTFOLIO
+   Shared Stylesheet | Advanced Web Design
+   ============================================ */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Lato:wght@300;400;700&display=swap');
+
+/* ---- COLOUR VARIABLES ---- */
+:root {
+  --black:  #0e0e0e;
+  --dark:   #1a1a1a;
+  --grey:   #888888;
+  --light:  #cccccc;
+  --white:  #f5f5f5;
+  --red:    #e63224;
+  --border: #2e2e2e;
+}
+
+/* ---- BASIC RESET ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background-color: rgba(14, 14, 14, 0.96);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  z-index: 999;
+}
+
+.nav-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.nav-logo span {
+  color: var(--red);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--red);
+}
+
+/* Hamburger button — shown only on mobile */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--white);
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* Mobile dropdown menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 65px;
+  left: 0;
+  right: 0;
+  background-color: var(--dark);
+  border-bottom: 1px solid var(--border);
+  padding: 25px 50px;
+  z-index: 998;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mobile-menu a {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  transition: color 0.3s;
+}
+
+.mobile-menu a:hover {
+  color: var(--red);
+}
+
+/* ============================================
+   SHARED LAYOUT & UTILITIES
+   ============================================ */
+
+/* Main content container */
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+/* Small red label above headings */
+.tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+/* Short red underline */
+.red-line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--red);
+  margin: 18px 0;
+}
+
+/* All headings use Oswald font */
+h1, h2, h3, h4 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Paragraph text colour */
+p {
+  color: var(--light);
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-block;
+  padding: 13px 32px;
+  border: 1px solid var(--white);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  background: none;
+  font-family: 'Lato', sans-serif;
+}
+
+.btn:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.btn-red {
+  border-color: var(--red);
+  background-color: var(--red);
+  color: var(--black);
+}
+
+.btn-red:hover {
+  background-color: transparent;
+  color: var(--red);
+}
+
+/* ---- PHOTO PLACEHOLDER ---- */
+/* This is the grey box shown where your photos will go.
+   To add a real photo, replace the entire .photo-box div
+   with: <img src="YOUR-IMAGE-FILE.jpg" alt="description"> */
+.photo-box {
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark);
+  border: 1px dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--grey);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 20px;
+}
+
+.photo-box .plus-icon {
+  font-size: 26px;
+  color: var(--red);
+  margin-bottom: 5px;
+}
+
+/* ---- PAGE BANNER (top of each inner page) ---- */
+.page-banner {
+  padding-top: 65px;
+  background-color: var(--dark);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-banner .wrapper {
+  padding-top: 60px;
+  padding-bottom: 50px;
+}
+
+.page-banner h1 {
+  font-size: 72px;
+  color: var(--white);
+  line-height: 1;
+}
+
+.page-banner h1 span {
+  color: var(--red);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background-color: var(--dark);
+  border-top: 1px solid var(--border);
+  padding: 30px 50px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--white);
+}
+
+.footer-logo span {
+  color: var(--red);
+}
+
+footer p {
+  font-size: 12px;
+  color: var(--grey);
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-links a {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--red);
+}
+
+/* ============================================
+   FADE-IN ANIMATION ON SCROLL
+   ============================================ */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE — TABLET (max 900px)
+   ============================================ */
+@media (max-width: 900px) {
+  nav {
+    padding: 0 25px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .wrapper {
+    padding: 0 25px;
+  }
+
+  .mobile-menu {
+    padding: 25px;
+  }
+
+  .page-banner h1 {
+    font-size: 50px;
+  }
+
+  footer {
+    padding: 25px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (max 540px)
+   ============================================ */
+@media (max-width: 540px) {
+  nav {
+    padding: 0 18px;
+  }
+
+  .wrapper {
+    padding: 0 18px;
+  }
+
+  .page-banner h1 {
+    font-size: 38px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
